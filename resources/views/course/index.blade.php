@@ -25,6 +25,22 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ Session::get('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        @if (Session::has('failure'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ Session::get('failure') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         @if (count($courses) > 0)
                             <table class="table table-bordered m-0">
                                 <thead>
@@ -43,8 +59,8 @@
                                             <td>{{ $course->name }}</td>
                                             <td>{{ $course->duration }}</td>
                                             <td>
-                                                <a href="./edit-user.php?id=" class="btn btn-primary">Edit</a>
-                                                <a href="./delete-user.php?id=" class="btn btn-danger">Delete</a>
+                                                <a href="{{ route('course.edit', $course) }}" class="btn btn-primary">Edit</a>
+                                                <a href="{{ route('course.destroy', $course) }}" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
