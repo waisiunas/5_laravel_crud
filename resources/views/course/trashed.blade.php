@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses</title>
+    <title>Trashed Courses</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -17,12 +17,10 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-6">
-                                <h3 class="m-0">Courses</h3>
+                                <h3 class="m-0">Trashed Courses</h3>
                             </div>
                             <div class="col-6 text-end">
-                                <a href="{{ route('course.trashed') }}" class="btn btn-outline-primary">Deleted Courses</a>
-
-                                <a href="{{ route('course.create') }}" class="btn btn-outline-primary">Add Course</a>
+                                <a href="{{ route('course.index') }}" class="btn btn-outline-primary">Back</a>
                             </div>
                         </div>
                     </div>
@@ -61,8 +59,8 @@
                                             <td>{{ $course->name }}</td>
                                             <td>{{ $course->duration }}</td>
                                             <td>
-                                                <a href="{{ route('course.edit', $course) }}" class="btn btn-primary">Edit</a>
-                                                <a href="{{ route('course.destroy', $course) }}" class="btn btn-danger">Delete</a>
+                                                <a href="{{ route('course.recover', $course->id) }}" class="btn btn-primary">Recover</a>
+                                                <a href="{{ route('course.delete', $course->id) }}" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
                                     @endforeach
